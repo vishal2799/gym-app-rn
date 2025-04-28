@@ -1,84 +1,73 @@
-import React from "react";
-import { View, Text, Image, SafeAreaView, Button, StyleSheet, TouchableOpacity } from "react-native";
+import { onboardingData } from "@/constants";
+import { router } from "expo-router";
+import React, { useRef, useState } from "react";
+import { View, Text, Image, SafeAreaView, Button, StyleSheet, TouchableOpacity, ImageBackground } from "react-native";
 import Swiper from "react-native-swiper"; // Swiper for the onboarding carousel
 
 const CustomSwiper = () => {
+  const swiperRef = useRef<Swiper>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    if (currentIndex < onboardingData.length - 1) {
+      swiperRef.current?.scrollBy(1); // Move to next slide
+    } else {
+      // Last screen - Done button pressed
+      console.log("Onboarding Complete");
+      // Navigate to Home or set onboardingCompleted = true
+    }
+  };
+
   return (
     <>
-      {/* <Swiper
-        loop={false}
-        showsPagination={false}
+      <Swiper         ref={swiperRef} loop={false} activeDotColor="#6842FF" showsButtons={false}         onIndexChanged={(index) => setCurrentIndex(index)}
       >
-        <View className="flex-1 items-center justify-center p-4">
-          <Image
-            source={require("../assets/images/gym1.jpg")} // Update with your image path
-            className="w-1/2 h-1/2"
-          />
-          <Text className="text-xl font-bold mt-4">Welcome to GymApp</Text>
-          <Text className="text-lg text-center mt-2">
-            Start your fitness journey with the right tools to track your progress.
-          </Text>
-        </View>
-
-        <View className="flex-1 items-center justify-center p-4">
-          <Image
-            source={require("../assets/images/gym1.jpg")} // Update with your image path
-            className="w-1/2 h-1/2"
-          />
-          <Text className="text-xl font-bold mt-4">Track Your Workouts</Text>
-          <Text className="text-lg text-center mt-2">
-            Monitor your workouts and stay motivated with easy-to-track stats.
-          </Text>
-        </View>
-
-        <View className="flex-1 items-center justify-center p-4">
-          <Image
-            source={require("../assets/images/gym1.jpg")} // Update with your image path
-            className="w-1/2 h-1/2"
-          />
-          <Text className="text-xl font-bold mt-4">Stay Consistent</Text>
-          <Text className="text-lg text-center mt-2">
-            Stay on track with personalized plans and daily reminders.
-          </Text>
-        </View>
-      </Swiper> */}
-      <Swiper style={styles.wrapper} showsButtons loop={false}>
-    <View testID="Hello" style={styles.slide1}>
-        <View style={{backgroundColor: '#9DD6EB', height: '50%', width: '100%'}} />
-        <View className="w-full flex-row px-4">
-        <Text style={styles.text}>Hello Swiper</Text>
-        <TouchableOpacity
-                  onPress={() => console.log('work')} // Navigate to onboarding screen
-                  className="bg-secondary-900 py-3 px-5 rounded-full w-full items-center"
-                >
-                  <Text className="text-white font-ubold text-lg font-semibold">Get Started</Text>
-                </TouchableOpacity>
-        </View>
-    </View>
-    <View testID="Beautiful" style={styles.slide1}>
-        <View style={{backgroundColor: '#97CAE5', height: '50%', width: '100%'}} />
-        <View>
-        <Text style={styles.text}>Hello Swiper dvdvddfvdffdvvdvvvvv</Text>
-        <TouchableOpacity
-                  onPress={() => console.log('work')} // Navigate to onboarding screen
-                  className="bg-secondary-900 py-3 px-5 rounded-full w-full items-center"
-                >
-                  <Text className="text-white font-ubold text-lg font-semibold">Get Started</Text>
-                </TouchableOpacity>
-        </View>
-    </View>
-    <View testID="Simple" style={styles.slide1}>
-        <View style={{backgroundColor: '#92BBD9', height: '50%', width: '100%'}} />
-        <View>
-        <Text style={styles.text}>Hello Swiper</Text>
-        <TouchableOpacity
-                  onPress={() => console.log('work')} // Navigate to onboarding screen
-                  className="bg-secondary-900 py-3 px-5 rounded-full w-full items-center"
-                >
-                  <Text className="text-white font-ubold text-lg font-semibold">Get Started</Text>
-                </TouchableOpacity>
-        </View>
-    </View>
+          <View testID={onboardingData[0].id} style={styles.slide1}>
+            <Image
+                  source={onboardingData[0].image} // Replace with your background image
+                  style={{ width: '100%', height: '60%' }} // Ensure it covers the full screen
+               />
+               <View style={{height: '40%', width: '100%', paddingVertical: 80, paddingHorizontal: 30, flexDirection: 'column', justifyContent: 'space-between'}}>
+          <Text className="text-3xl font-ubold text-center text-primary">{onboardingData[0].text}</Text>
+          <TouchableOpacity
+                    onPress={handleNext} // Navigate to onboarding screen
+                    className="bg-secondary-900 py-3 px-5 rounded-full w-full items-center"
+                  >
+                    <Text className="text-white font-ubold text-lg font-semibold">Next</Text>
+                  </TouchableOpacity>
+          </View>
+      </View> 
+      <View testID={onboardingData[1].id} style={styles.slide1}>
+            <Image
+                  source={onboardingData[1].image} // Replace with your background image
+                  style={{ width: '100%', height: '60%' }} // Ensure it covers the full screen
+               />
+               <View style={{height: '40%', width: '100%', paddingVertical: 80, paddingHorizontal: 30, flexDirection: 'column', justifyContent: 'space-between'}}>
+          <Text className="text-3xl font-ubold text-center text-primary">{onboardingData[1].text}</Text>
+          <TouchableOpacity
+                    onPress={handleNext} // Navigate to onboarding screen
+                    className="bg-secondary-900 py-3 px-5 rounded-full w-full items-center"
+                  >
+                    <Text className="text-white font-ubold text-lg font-semibold">Next</Text>
+                  </TouchableOpacity>
+          </View>
+      </View> 
+      <View testID={onboardingData[2].id} style={styles.slide1}>
+            <Image
+                  source={onboardingData[2].image} // Replace with your background image
+                  style={{ width: '100%', height: '60%' }} // Ensure it covers the full screen
+               />
+               <View style={{height: '40%', width: '100%', paddingVertical: 80, paddingHorizontal: 30, flexDirection: 'column', justifyContent: 'space-between'}}>
+          <Text className="text-3xl font-ubold text-center text-primary">{onboardingData[2].text}</Text>
+          <TouchableOpacity
+                    onPress={() => router.replace('/(auth)/login')} // Navigate to onboarding screen
+                    className="bg-secondary-900 py-3 px-5 rounded-full w-full items-center"
+                  >
+                    <Text className="text-white font-ubold text-lg font-semibold">Next</Text>
+                  </TouchableOpacity>
+          </View>
+      </View>  
+      
   </Swiper>
   </>
   );
