@@ -1,5 +1,6 @@
 import { onboardingData } from "@/constants";
 import { router } from "expo-router";
+import { setItem } from "expo-secure-store";
 import React, { useRef, useState } from "react";
 import { View, Text, Image, SafeAreaView, Button, StyleSheet, TouchableOpacity, ImageBackground } from "react-native";
 import Swiper from "react-native-swiper"; // Swiper for the onboarding carousel
@@ -17,6 +18,16 @@ const CustomSwiper = () => {
       // Navigate to Home or set onboardingCompleted = true
     }
   };
+
+  const handleDone = async () => {
+      try {
+        await setItem('onboardingCompleted', 'true');
+        router.push("/(account)/gender"); 
+      } catch (error) {
+        console.error("Failed to save gender", error);
+      }
+    };
+
 
   return (
     <>
@@ -60,7 +71,7 @@ const CustomSwiper = () => {
                <View style={{height: '40%', width: '100%', paddingVertical: 80, paddingHorizontal: 30, flexDirection: 'column', justifyContent: 'space-between'}}>
           <Text className="text-3xl font-ubold text-center text-primary">{onboardingData[2].text}</Text>
           <TouchableOpacity
-                    onPress={() => router.replace('/(auth)/login')} // Navigate to onboarding screen
+                    onPress={handleDone} // Navigate to onboarding screen
                     className="bg-secondary-900 py-3 px-5 rounded-full w-full items-center"
                   >
                     <Text className="text-white font-ubold text-lg font-semibold">Next</Text>
