@@ -1,27 +1,38 @@
-import { View, Text, TouchableOpacity } from 'react-native';
-import { router } from 'expo-router';
+import React, { useEffect, useState } from "react";
+import { View, Button } from "react-native";
+import CustomSwiper from "@/components/CustomSwiper";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function OnboardingScreen() {
-  const handleFinishOnboarding = () => {
-    // Later you will set onboardingCompleted = true in storage
-    router.replace('/(tabs)/home');
+const OnboardingScreen = () => {
+  const [isOnboardingCompleted, setIsOnboardingCompleted] = useState(false);
+
+  // useEffect(() => {
+  //   const checkOnboardingStatus = async () => {
+  //     const completed = await SecureStore.getItemAsync("onboardingCompleted");
+  //     if (completed === "true") {
+  //       setIsOnboardingCompleted(true);
+  //     }
+  //   };
+
+  //   checkOnboardingStatus();
+  // }, []);
+
+  const handleDone = async () => {
+    // await SecureStore.setItemAsync("onboardingCompleted", "true");
+    // navigation.navigate("Home"); // Change to your home screen route
   };
 
-  return (
-    <View className="flex-1 justify-center items-center bg-white p-6">
-      <Text className="text-3xl font-bold mb-4">Onboarding Carousel</Text>
-      <Text className="text-base text-gray-600 mb-10 text-center">
-        Swipe through onboarding slides here.
-      </Text>
+  if (isOnboardingCompleted) {
+    // If onboarding is already completed, directly navigate to home
+    return <View className="flex-1 items-center justify-center" />;
+  }
 
-      <TouchableOpacity
-        onPress={handleFinishOnboarding}
-        className="bg-primary px-6 py-4 rounded-full w-full"
-      >
-        <Text className="text-white text-center text-lg font-semibold">
-          Finish
-        </Text>
-      </TouchableOpacity>
-    </View>
+  return (
+<>  
+      <CustomSwiper />
+      {/* <Button title="Get Started" onPress={handleDone} /> */}
+      </>
   );
-}
+};
+
+export default OnboardingScreen;

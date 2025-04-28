@@ -15,6 +15,16 @@ export default function WelcomeScreen() {
       className="flex-1 justify-center items-center bg-cover"
       style={{ width: '100%', height: '100%' }} // Ensure it covers the full screen
     >
+      <View
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.4)', // Semi-transparent overlay
+    }}
+  />
       <SafeAreaView className="flex-1 justify-end items-start p-4">
         
 
