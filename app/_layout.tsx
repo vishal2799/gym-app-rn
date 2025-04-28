@@ -3,22 +3,24 @@ import "../global.css"
 
 import {  Slot, SplashScreen } from "expo-router";
 import { useEffect} from "react";
+import { Urbanist_400Regular, Urbanist_700Bold } from "@expo-google-fonts/urbanist";
 
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+  const [loaded, error] = useFonts({
+    Urbanist_400Regular,
+    Urbanist_700Bold
   });
 
   useEffect(() => {
-    if (loaded) {
+    if (loaded || error) {
       SplashScreen.hideAsync();
     }
-  }, [loaded]);
+  }, [loaded, error]);
 
-  if (!loaded) {
+  if (!loaded && !error) {
     return null;
   }
 

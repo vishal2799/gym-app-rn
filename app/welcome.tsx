@@ -15,9 +15,9 @@ export default function WelcomeScreen() {
 
       <TouchableOpacity
         onPress={handleGetStarted}
-        className="bg-primary px-6 py-4 rounded-full w-full"
+        className="bg-secondary-900 px-6 py-4 rounded-full w-full"
       >
-        <Text className="text-white text-center text-lg font-semibold">
+        <Text className="font-ubold text-white text-center text-lg">
           Get Started
         </Text>
       </TouchableOpacity>
