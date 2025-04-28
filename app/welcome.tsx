@@ -1,5 +1,7 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, Image } from 'react-native';
 import { router } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
 
 export default function WelcomeScreen() {
   const handleGetStarted = () => {
@@ -7,20 +9,40 @@ export default function WelcomeScreen() {
   };
 
   return (
-    <View className="flex-1 justify-center items-center bg-white p-6">
-      <Text className="text-3xl font-bold mb-4">Welcome to FitTrack</Text>
-      <Text className="text-base text-gray-600 mb-10 text-center">
-        Track your workouts, achieve your fitness goals!
-      </Text>
+    <>
+    <ImageBackground
+      source={require('../assets/images/gym1.jpg')} // Replace with your background image
+      className="flex-1 justify-center items-center bg-cover"
+      style={{ width: '100%', height: '100%' }} // Ensure it covers the full screen
+    >
+      <SafeAreaView className="flex-1 justify-end items-start p-4">
+        
 
-      <TouchableOpacity
-        onPress={handleGetStarted}
-        className="bg-secondary-900 px-6 py-4 rounded-full w-full"
-      >
-        <Text className="font-ubold text-white text-center text-lg">
-          Get Started
+        {/* Welcome Message */}
+        <Text className="text-white text-3xl font-ubold text-center mb-4">
+          Welcome to
         </Text>
-      </TouchableOpacity>
-    </View>
+
+        <Text className="text-white text-6xl font-ubold text-center mb-5">
+          GoFit
+        </Text>
+
+        {/* Description */}
+        <Text className="font-uregular text-white text-xl mb-8">
+          Your fitness journey starts here. Let's help you reach your goals.
+        </Text>
+
+        {/* Get Started Button */}
+        <TouchableOpacity
+          onPress={() => router.navigate('/(onboarding)/onboarding')} // Navigate to onboarding screen
+          className="bg-secondary-900 py-3 px-5 rounded-full w-full max-w-xs items-center"
+        >
+          <Text className="text-white font-ubold text-lg font-semibold">Get Started</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    </ImageBackground>
+          <StatusBar style="light" />
+    
+    </>
   );
 }
