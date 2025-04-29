@@ -28,7 +28,7 @@ const WeightScreen = () => {
       <View className='w-full p-8 flex-col justify-between h-full'>
         <View>
         <Text className='text-primary dark:text-white text-center font-ubold text-3xl'>What is Your Weight?</Text>
-        <Text className='text-primary dark:text-accent text-center font-uregular text-xl mt-5'>Weight in Kg. Don't worry, you can always change it later.</Text>
+        <Text className='text-primary dark:text-accent text-center font-uregular text-xl mt-5'>Weight in kg. Don't worry, you can always change it later.</Text>
         </View>
 
         <View className='w-full items-center'>
