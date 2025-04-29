@@ -4,8 +4,13 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { router } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
 import { setItem } from '@/utils/storage'
+import { colorScheme, useColorScheme } from "nativewind";
+
 
 const GenderScreen = () => {
+  // Or as a hook
+  // const { setColorScheme } = useColorScheme();
+  // setColorScheme("system");
   const [selectedGender, setSelectedGender] = useState<string | null>('Male');
   const genders = [{name:"Male", icon: 'male'}, {name: "Female", icon: 'female'}];
 
@@ -24,11 +29,11 @@ const GenderScreen = () => {
   };
 
   return (
-    <SafeAreaView className='flex-1 justify-center items-center'>
+    <SafeAreaView className={`bg-white dark:bg-primary flex-1 justify-center items-center`}>
       <View className='w-full p-8 flex-col justify-between h-full'>
         <View>
-        <Text className='text-primary text-center font-ubold text-3xl'>Tell Us About Yourself</Text>
-        <Text className='text-primary text-center font-uregular text-xl mt-5'>To give you a better experience and results we need to know your gender</Text>
+        <Text className='text-primary dark:text-white text-center font-ubold text-3xl'>Tell Us About Yourself</Text>
+        <Text className='text-primary dark:text-white text-center font-uregular text-xl mt-5'>To give you a better experience and results we need to know your gender</Text>
         </View>
 
         <View className='w-full items-center'>
@@ -37,7 +42,7 @@ const GenderScreen = () => {
         key={index}
         onPress={() => setSelectedGender(gender.name)}
         className={`w-36 aspect-square rounded-full mb-8 mx-2 items-center justify-center text-white ${
-          selectedGender === gender.name ? "bg-secondary-900" : "bg-gray-300"
+          selectedGender === gender.name ? "bg-secondary-900" : "bg-gray-300 dark:bg-gray-600"
         }`}
       >
         <Ionicons name={gender.icon} size={40} color="white" />

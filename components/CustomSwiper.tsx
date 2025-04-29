@@ -2,10 +2,11 @@ import { onboardingData } from "@/constants";
 import { router } from "expo-router";
 import { setItem } from "expo-secure-store";
 import React, { useRef, useState } from "react";
-import { View, Text, Image, SafeAreaView, Button, StyleSheet, TouchableOpacity, ImageBackground } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import Swiper from "react-native-swiper"; // Swiper for the onboarding carousel
 
 const CustomSwiper = () => {
+
   const swiperRef = useRef<Swiper>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
