@@ -12,8 +12,8 @@ export default function Index() {
   useEffect(() => {
     async function loadData() {
       const onboarding = await getItem('onboardingCompleted');
-      // setOnboardingCompleted(onboarding === 'true');
-      setOnboardingCompleted(false);
+      setOnboardingCompleted(onboarding === 'true');
+      // setOnboardingCompleted(false);
     }
 
     loadData();

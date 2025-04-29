@@ -4,13 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { router } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
 import { setItem } from '@/utils/storage'
-import { colorScheme, useColorScheme } from "nativewind";
 
 
 const GenderScreen = () => {
-  // Or as a hook
-  // const { setColorScheme } = useColorScheme();
-  // setColorScheme("system");
   const [selectedGender, setSelectedGender] = useState<string | null>('Male');
   const genders = [{name:"Male", icon: 'male'}, {name: "Female", icon: 'female'}];
 
@@ -33,7 +29,7 @@ const GenderScreen = () => {
       <View className='w-full p-8 flex-col justify-between h-full'>
         <View>
         <Text className='text-primary dark:text-white text-center font-ubold text-3xl'>Tell Us About Yourself</Text>
-        <Text className='text-primary dark:text-white text-center font-uregular text-xl mt-5'>To give you a better experience and results we need to know your gender</Text>
+        <Text className='text-primary dark:text-accent text-center font-uregular text-xl mt-5'>To give you a better experience and results we need to know your gender</Text>
         </View>
 
         <View className='w-full items-center'>
