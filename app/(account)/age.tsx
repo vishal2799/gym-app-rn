@@ -4,12 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { router } from 'expo-router'
 import { setItem } from '@/utils/storage'
 import {Picker} from '@react-native-picker/picker';
-import { useColorScheme } from 'nativewind'
 
 
 const AgeScreen = () => {
-  const { setColorScheme } = useColorScheme();
-  setColorScheme("light");
   const [age, setAge] = useState("18");
 
 
