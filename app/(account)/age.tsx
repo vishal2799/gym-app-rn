@@ -38,7 +38,6 @@ const AgeScreen = () => {
         selectedValue={age}
         onValueChange={(itemValue) => setAge(itemValue)}
         style={{ width: 200, height: 250 }} // must give height for iOS!
-        selectionColor={'#6842FF'}
       >
         {Array.from({ length: 100 }, (_, i) => {
           const value = (i).toString();
