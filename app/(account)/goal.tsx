@@ -14,8 +14,8 @@ const goals = [
 ];
 
 const GoalScreen = () => {
-  const { setColorScheme } = useColorScheme();
-  setColorScheme("dark");
+  // const { setColorScheme } = useColorScheme();
+  // setColorScheme("dark");
 
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
   const [showError, setShowError] = useState(false);
