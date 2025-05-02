@@ -11,9 +11,12 @@ export default function Index() {
 
   useEffect(() => {
     async function loadData() {
-      const onboarding = await getItem('onboardingCompleted');
-      setOnboardingCompleted(onboarding === 'true');
-      // setOnboardingCompleted(false);
+      // const onboarding = await getItem('onboardingCompleted');
+      // setOnboardingCompleted(onboarding === 'true');
+      // const account = await getItem('accountCompleted');
+      // setIsAccountSetup(account === 'true');
+      setOnboardingCompleted(false);
+      setIsAccountSetup(false);
     }
 
     loadData();
@@ -41,7 +44,7 @@ export default function Index() {
   }
 
   if (!isLoggedIn) {
-    return <Redirect href="/(auth)/login" />;
+    return <Redirect href="/(auth)/sign-in" />;
   }
 
   return <Redirect href="/(tabs)/home" />;

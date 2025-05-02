@@ -7,16 +7,10 @@ import { useColorScheme } from 'nativewind'
 import * as SecureStore from 'expo-secure-store';
 import { setItem } from '@/utils/storage'
 
-const goals = [
-  { id: "1", name: "Lose Weight" },
-  { id: "2", name: "Build Muscle" },
-  { id: "3", name: "Stay Fit" },
-  { id: "4", name: "Improve Endurance" },
-];
 
 const LevelScreen = () => {
-//   const { setColorScheme } = useColorScheme();
-//   setColorScheme("light");
+  const { setColorScheme } = useColorScheme();
+  setColorScheme("light");
 
   const [selectedLevel, setSelectedLevel] = useState<string | null>('Beginner');
     const levels = [{name:"Beginner", icon: 'male'}, {name: "Intermediate", icon: 'female'}, {name: "Advanced", icon: 'female'}];
@@ -50,7 +44,7 @@ const LevelScreen = () => {
               key={index}
               onPress={() => setSelectedLevel(level.name)}
               className={`w-full p-5 rounded-md my-2 mx-2 items-center justify-center text-white ${
-                selectedLevel === level.name ? "bg-secondary-900 shadow-none" : "shadow-md shadow-gray-200 dark:shadow-none dark:bg-gray-800"
+                selectedLevel === level.name ? "bg-secondary-900 shadow-none" : "bg-white shadow-md shadow-slate-200 dark:shadow-none dark:bg-gray-800"
               }`}
             >
               <Text className={`text-center ${selectedLevel === level.name ? "text-white" : "text-primary"} dark:text-white font-ubold text-base`}>{level.name}</Text>

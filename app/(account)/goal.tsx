@@ -51,10 +51,11 @@ const GoalScreen = () => {
         <Text className='text-primary dark:text-accent text-center font-uregular text-xl mt-5'>You can choose more than one. Don't worry, you can always change it later.</Text>
         </View>
 
-        <View className='w-full items-center'>
+        <View className='w-full justify-center items-center'>
         <FlatList
         data={goals}
         keyExtractor={(item) => item.id}
+        ItemSeparatorComponent={() => <View  className='my-3'/>}
         renderItem={({ item }) => {
           const selected = selectedGoals.includes(item.id);
           const activeClasses  = selected ? 'border-2 border-secondary-900 shadow-none' : 'border-transparent'
@@ -62,7 +63,7 @@ const GoalScreen = () => {
             <TouchableOpacity
               onPress={() => toggleGoal(item.id)}
               
-              className={`border-2 ${activeClasses} w-full flex-row my-3 rounded-lg bg-white shadow-sm shadow-gray-300 dark:shadow-none dark:bg-gray-800 items-center justify-between p-5`}
+              className={`${activeClasses} flex-row w-full p-5 rounded-lg bg-white shadow-md shadow-slate-100 dark:shadow-none dark:bg-gray-800 items-center justify-between`}
             >
               <Text className="text-lg font-uregular text-black dark:text-white">{item.name}</Text>
               <Ionicons
